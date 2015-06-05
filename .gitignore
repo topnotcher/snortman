@@ -1,0 +1,4 @@
+*.rules
+*.map
+*.gz
+rules/
