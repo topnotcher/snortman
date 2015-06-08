@@ -242,6 +242,9 @@ class RuleWriter
 	def write_sid_map(rule)
 		priority = resolve_rule_priority(rule)
 
+		# prevent barnyard parse errors when this is not specified
+		rule[:opts][:classtype] ||= 'bad-unknown'
+
 		map = "%d || %s || %s || %s || %d || %s" % [1, rule[:opts][:sid], rule[:opts][:rev],rule[:opts][:classtype], priority, rule[:opts][:msg]]
 		map += ' || ' + rule[:opts][:reference].join(' || ') if rule[:opts][:reference]
 		return map
